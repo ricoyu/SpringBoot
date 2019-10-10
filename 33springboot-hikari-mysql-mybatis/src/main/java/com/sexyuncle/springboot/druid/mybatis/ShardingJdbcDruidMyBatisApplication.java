@@ -1,10 +1,13 @@
 package com.sexyuncle.springboot.druid.mybatis;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Hikari基于MySQL的优化配置示例
+ * Sharding-jdbc Druid数据源 Master-Slave读写分离 Mybatis配置
  * <p>
  * Copyright: Copyright (c) 2019-02-16 21:38
  * <p>
@@ -14,7 +17,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  * @on
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DruidDataSourceAutoConfigure.class})
+@EnableTransactionManagement
+@MapperScan(basePackages = "com.sexyuncle.springboot.druid.mybatis.mapper")
 public class ShardingJdbcDruidMyBatisApplication {
 
 	public static void main(String[] args) {

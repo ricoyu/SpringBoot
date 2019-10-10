@@ -53,8 +53,8 @@ sharding:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapping/*.xml #注意：一定要对应mapper映射xml文件的所在路径
-  type-aliases-package: com.sexyuncle.springboot.hikari.mybatis.entity # 注意：对应实体类的路径
+  mapper-locations: classpath:mapper/*.xml #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.sexyuncle.springboot.druid.mybatis.entity # 注意：对应实体类的路径
 #pagehelper分页插件
 pagehelper:
   helperDialect: mysql
