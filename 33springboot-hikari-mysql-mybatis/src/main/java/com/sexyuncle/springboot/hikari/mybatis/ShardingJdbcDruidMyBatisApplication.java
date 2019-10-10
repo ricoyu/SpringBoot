@@ -1,5 +1,6 @@
 package com.sexyuncle.springboot.hikari.mybatis;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,9 +16,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @on
  */
 @SpringBootApplication
-public class HikariMySQLMyBatisApplication {
+public class ShardingJdbcDruidMyBatisApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HikariMySQLMyBatisApplication.class, args);
+		SpringApplication.run(ShardingJdbcDruidMyBatisApplication.class, args);
 	}
 }
