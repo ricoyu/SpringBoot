@@ -27,6 +27,6 @@ public class TicketController {
 
 	@GetMapping("/ticket/{id}")
 	public Ticket getTicket(@PathVariable Long id) {
-		return ticketMapper.findOne(id);
+		return ticketMapper.findOne();
 	}
 }

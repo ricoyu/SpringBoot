@@ -5,8 +5,8 @@
 
 <mapper namespace="com.sexyuncle.springboot.druid.mybatis.mapper.TicketMapper">
     
-    <select id="findOne" parameterType="Long" resultType="com.sexyuncle.springboot.druid.mybatis.entity.Ticket">
-        select * from gd_ticket where id= #{id}
+    <select id="findOne" resultType="com.sexyuncle.springboot.druid.mybatis.entity.Ticket">
+        select * from gd_ticket
     </select>
     
 </mapper>
