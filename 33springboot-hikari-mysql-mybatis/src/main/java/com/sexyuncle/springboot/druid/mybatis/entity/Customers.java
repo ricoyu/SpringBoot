@@ -1,4 +1,4 @@
-package com.sexyuncle.springboot.hikari.mybatis.entity;
+package com.sexyuncle.springboot.druid.mybatis.entity;
 
 import lombok.Data;
 

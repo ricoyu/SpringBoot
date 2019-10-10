@@ -1,4 +1,4 @@
-package com.sexyuncle.springboot.hikari.mybatis.controller;
+package com.sexyuncle.springboot.druid.mybatis.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

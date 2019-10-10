@@ -1,4 +1,4 @@
-package com.sexyuncle.springboot.hikari.mybatis;
+package com.sexyuncle.springboot.druid.mybatis;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

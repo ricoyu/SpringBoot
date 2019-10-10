@@ -1,4 +1,4 @@
-package com.sexyuncle.springboot.hikari.mybatis.config;
+package com.sexyuncle.springboot.druid.mybatis.config;
 
 import org.springframework.context.annotation.Configuration;
 
