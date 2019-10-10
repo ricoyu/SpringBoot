@@ -1,0 +1,37 @@
+# Enabling H2 Console http://localhost:8080/h2-console
+spring:
+  # Enabling H2 Console
+  h2.console.enabled: true
+  
+  application: 
+    #用于指定注册到Eureka Server上的名称
+    name: h2-console
+  jpa:
+    generate-ddl: false 
+    show-sql: true
+    #It’s also important to remember to turn off automatic schema creation to avoid conflicts
+    hibernate.ddl-auto: none  #配合schema.sql，这里必须不启用hibernate的DDL
+    database-platform: org.hibernate.dialect.H2Dialect
+  #下面的选项与值是Spring自动配置时所采用的
+  datasource:                           # 指定数据源
+    platform: h2                        # 指定数据源类型
+    #url: jdbc:h2:mem:testdb
+    #http://www.h2database.com/html/features.html
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;MVCC=true;DB_CLOSE_DELAY=-1  # MySQL兼容模式
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+
+    #Initialize the datasource with available DDL and DML scripts.默认是embedded，如果采用了像H2这样的内嵌数据库,如果采用MySQL也想跑脚本，可以用always
+    initialization-mode: embedded 
+    #POM加入spring-boot-starter-actuator依赖，这边脚本就不会跑，这是为什么？
+    schema: classpath:schema.sql        # 指定h2数据库的建表脚本
+    data: classpath:data.sql            # 指定h2数据库的数据脚本
+    
+logging:                                # 配置日志级别，让hibernate打印出执行的SQL
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    

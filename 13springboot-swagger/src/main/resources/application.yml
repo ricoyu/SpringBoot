@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Spring Boot Swagger2
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+
+server:
+  port: 8080

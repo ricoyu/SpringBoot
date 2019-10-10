@@ -1,0 +1,7 @@
+server:
+  port: 666
+#  
+#logging: 
+#  level: 
+#    root: WARN
+#    org.springframework: DEBUG

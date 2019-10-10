@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <sql-query name="searchSettlement">
+        <![CDATA[
+			SELECT
+            	#count()
+				s.* 
+				#end
+			FROM
+				settlement s
+			WHERE 1=1
+				#if($settlementIds)
+					AND s.SETTLEMENT_ID IN ( :settlementIds ) 
+				#end
+				#if($auditState)
+					AND s.AUDIT_STATE = :auditState 
+				#end
+				#if($payState)
+					AND s.PAY_STATE = :payState 
+				#end
+				#if($state)
+					AND s.STATE = :state 
+				#end
+				#if($applyDateBegin && $applyDateEnd)
+					AND APPLY_DATE BETWEEN :applyDateBegin AND :applyDateEnd
+				#elseif($applyDateBegin && !$applyDateEnd)
+					AND APPLY_DATE >= :applyDateBegin
+				#elseif(!$applyDateBegin  && $applyDateEnd)
+					AND APPLY_DATE <= :applyDateEnd
+				#end
+		]]>
+    </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <sql-query name="searchReservedWords">
+        <![CDATA[
+		SELECT
+		*
+        FROM
+            reserved_words a
+        WHERE
+        	1 = 1
+            #if($reservedWord)
+            	AND reserved_word like :reservedWord
+            #end
+            #if($reservedType)
+            	AND reserved_type like :reservedType
+            #end
+        ORDER BY reserved_word
+        ]]>
+    </sql-query>
+</hibernate-mapping>

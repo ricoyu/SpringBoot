@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <sql-query name="queryPurchaserReturns">
+        <![CDATA[
+            SELECT
+            	#count()
+				r.ID, r.RETURN_ID, 
+				GROUP_CONCAT(i.CITY) CITY, 
+				i.APPLY_DATE, 
+				i.APPLY_DATE DELIVERY_DATE, 
+				r.SUPPLIER, SUM(i.AMOUNT) AMOUNT, 
+				r.STATE STATE, 
+				'普通' RETURN_TYPE, "否" TC_TRANSFER
+				#end
+			FROM
+				purchase_return r
+				join return_item i on r.RETURN_ID = i.RETURN_ID
+			WHERE 1=1
+				#if($returnId)
+					AND r.RETURN_ID = :returnId 
+				#end
+				#if($state)
+					AND r.STATE = :state 
+				#end
+				#if($city)
+					AND i.CITY LIKE :city 
+				#end
+				#if($purchaser)
+					AND i.PURCHASER LIKE :purchaser 
+				#end
+				#if($applyDateBegin && $applyDateEnd)
+					AND i.APPLY_DATE BETWEEN :applyDateBegin AND :applyDateEnd
+				#elseif($applyDateBegin && !$applyDateEnd)
+					AND i.APPLY_DATE >= :applyDateBegin
+				#elseif(!$applyDateBegin  && $applyDateEnd)
+					AND i.APPLY_DATE <= :applyDateEnd
+				#end
+				#omitForCount()
+				GROUP BY r.id
+				#end
+		]]>
+    </sql-query>
+    
+	<sql-query name="findAllPurchasers">
+        <![CDATA[
+        	SELECT DISTINCT ORDER_ID, PURCHASER from purchase_order ORDER BY ORDER_ID, PURCHASER
+		]]>
+    </sql-query>        
+    
+</hibernate-mapping>

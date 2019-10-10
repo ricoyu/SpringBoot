@@ -1,0 +1,4 @@
+org.springframework.context.ApplicationListener=
+  com.sexyuncle.springboot.events.listener.ApplicationPreparedEventListener,\
+  com.sexyuncle.springboot.events.listener.ApplicationReadyEventListener,\
+  com.sexyuncle.springboot.events.listener.ApplicationStartedEventListener

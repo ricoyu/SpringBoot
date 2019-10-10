@@ -1,0 +1,50 @@
+spring: 
+  datasource:
+    driver-class: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.102.103:3306/springboot-quartz?useUnicode=true&amp;useSSL=false&amp;rewriteBatchedStatements=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8
+    username: springboot
+    password: 123456
+    platform: mysql
+    tomcat: 
+      default-auto-commit: true
+      initial-size: 30
+      max-active: 120
+      max-wait: 10000
+      test-on-borrow: true
+      test-while-idle: true
+      validation-query: SELECT 1
+      validation-query-timeout: 3
+      time-between-eviction-runs-millis: 10000
+      min-evictable-idle-time-millis: 120000
+      remove-abandoned: true
+      remove-abandoned-timeout: 120  
+  #initialization-mode: always
+  #initialization-mode: never
+  #schema: classpath:quartz-schema/schema-${spring.datasource.platform}.sql      
+  jpa:
+    properties:
+      hibernate:
+        hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+        show_sql: true
+        format_sql: true
+        ddl-auto: none
+        jdbc.batch_size: 4
+        order_inserts: true
+        entitymanager.packagesToScan: com.sexyuncle.springboot.auartz.entity     
+
+org:
+  quartz:
+    job-store-type: jdbc      
+    scheduler:
+      instanceName: springboot-quartz
+      instanceId: AUTO
+    threadPool: 
+      threadCount: 12
+   
+hibernate.query.mode: dev
+
+job:
+  startDelay: 0
+  repeatInterval: 60000
+  description: First springboot quartz demo
+  key: StatisticJob        
