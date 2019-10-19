@@ -1,5 +1,7 @@
 package com.sexyuncle.springboot.hikari;
 
+import com.loserico.commons.jackson.JacksonUtils;
+import org.apache.catalina.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,9 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * Company: DataSense
  * <p>
+ *
  * @author Rico Yu  ricoyu520@gmail.com
  * @version 1.0
- * @on
  */
 @SpringBootApplication
 public class HikariMySQLApplication {

@@ -16,7 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * @author Rico Yu	ricoyu520@gmail.com
  * @version 1.0
- * @on
  */
 @SpringBootApplication
 public class ActutorApplication {
