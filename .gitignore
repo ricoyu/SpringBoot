@@ -4,3 +4,4 @@
 *.iml
 target
 .classpath
+/33springboot-hikari-mysql-mybatis/src/main/resources/rebel.xml

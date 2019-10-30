@@ -43,6 +43,7 @@
         <module>31springboot-reactor</module>
         <module>32springboot-sharding-jdbc</module>
         <module>33springboot-hikari-mysql-mybatis</module>
+        <module>34springboot-rabbitmq</module>
     </modules>
 
     <properties>
