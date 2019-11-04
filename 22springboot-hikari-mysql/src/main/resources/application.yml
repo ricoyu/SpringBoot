@@ -1,0 +1,41 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+            connection-timeout: 30000
+            data-source-properties:
+                cachePrepStmts: true
+                cacheResultSetMetadata: true
+                elideSetAutoCommits: true
+                maintainTimeStats: false
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                rewriteBatchedStatements: true
+                useLocalSessionState: true
+                useServerPrepStmts: true
+            idle-timeout: 30000
+            maximum-pool-size: 15
+            minimum-idle: 5
+            poolName: HikariSexyUnclePool
+        password: 123456
+        url: jdbc:mysql://localhost:3306/classicmodels?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&useCompression=true&useUnicode=true&autoReconnect=true&autoReconnectForPools=true&failOverReadOnly=false
+        username: rico
+    jackson:
+        serialization:
+            indent_output: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        hibernate:
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                ddl-auto: none
+                format_sql: true
+        show-sql: true

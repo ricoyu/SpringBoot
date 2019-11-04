@@ -1,7 +1,6 @@
 package com.sexyuncle.springboot.rabbitmq.utils;
 
 import com.rabbitmq.client.ConnectionFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebApplication;
 
 /**
  * <p>
@@ -15,13 +14,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebAppli
  */
 public final class ConnectionFactoryUtils {
 	
-	public static ConnectionFactory connectionFactory(String host, String virtualHost, String username, String password) {
+	public static ConnectionFactory connectionFactory() {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
-		connectionFactory.setHost(host);
+		connectionFactory.setHost("192.168.2.101");
 		connectionFactory.setPort(5672);
-		connectionFactory.setVirtualHost(virtualHost);
-		connectionFactory.setUsername(username);
-		connectionFactory.setPassword(password);
+		connectionFactory.setVirtualHost("tuling");
+		connectionFactory.setUsername("rico");
+		connectionFactory.setPassword("123456");
+		connectionFactory.setConnectionTimeout(10000);
 		return connectionFactory;
 	}
 }
