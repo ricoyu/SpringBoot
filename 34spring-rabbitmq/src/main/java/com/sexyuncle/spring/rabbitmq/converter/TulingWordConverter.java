@@ -1,0 +1,44 @@
+package com.sexyuncle.spring.rabbitmq.converter;
+
+import com.loserico.common.lang.utils.IOUtils;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.support.converter.MessageConversionException;
+import org.springframework.amqp.support.converter.MessageConverter;
+
+import java.util.UUID;
+
+/**
+ * Created by smlz on 2019/10/9.
+ */
+public class TulingWordConverter implements MessageConverter {
+    @Override
+    public Message toMessage(Object object, MessageProperties messageProperties) throws MessageConversionException {
+        return null;
+    }
+
+    @Override
+    public Object fromMessage(Message message) throws MessageConversionException {
+        System.out.println("自定义的文档转换器................");
+        String msgContentType = message.getMessageProperties().getContentType();
+        String fileSuffix = null;
+        if(msgContentType !=null &&msgContentType.contains("word")) {
+            fileSuffix = "docx";
+        }else {
+            fileSuffix="doc";
+        }
+        byte[] msgBody = message.getBody();
+        String filePrefixName = UUID.randomUUID().toString();
+        String filePath = "d:/smlz/file02/"+filePrefixName+"."+fileSuffix;
+        System.out.println("文件路径:"+filePath);
+    
+        IOUtils.write(filePath, msgBody);
+        /*File file = new File(filePath);
+        try {
+            Files.copy(new ByteArrayInputStream(msgBody), file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        return filePath;
+    }
+}
