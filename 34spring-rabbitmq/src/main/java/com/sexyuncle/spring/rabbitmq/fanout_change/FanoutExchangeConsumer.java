@@ -52,9 +52,5 @@ public class FanoutExchangeConsumer {
 		QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
 		channel.basicConsume(queueName, true, queueingConsumer);
 		
-		while (true) {
-			QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
-			System.out.println("接受到消息:" + new String(delivery.getBody(), "UTF-8"));
-		}
 	}
 }

@@ -62,13 +62,5 @@ public class RabbitmqMessageConsumer {
 		 * 开始消费
 		 */
 		channel.basicConsume(queueName,true,queueingConsumer);
-		
-		while (true) {
-			QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
-			String reserveMsg = new String(delivery.getBody());
-			System.out.println("encoding:"+delivery.getProperties().getContentEncoding());
-			System.out.println("company:"+delivery.getProperties().getHeaders().get("company"));
-			System.out.println("correlationId:"+delivery.getProperties().getCorrelationId());
-		}
 	}
 }

@@ -45,5 +45,6 @@ public class QuickProducer {
 		//关闭连接
 		channel.close();
 		connection.close();
+		System.out.println("done");
 	}
 }

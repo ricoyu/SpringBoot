@@ -4,10 +4,10 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://192.168.10.120:3306/partition_test
+      url: jdbc:mysql://192.168.2.101:3306/sharding_db?useSSL=false
       # 根据url自动识别。这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName
-      driver-class-name: com.mysql.jdbc.Driver
-      username: ssy
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: rico
       password: 123456
       # 初始化时建立物理连接的个数。初始化发生在显式调用init方法，或者第一次getConnection时
       initial-size: 8

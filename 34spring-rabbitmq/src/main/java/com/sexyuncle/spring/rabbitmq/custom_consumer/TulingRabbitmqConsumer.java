@@ -58,5 +58,6 @@ public class TulingRabbitmqConsumer {
 		
 		//这个API是不自动ACK的
 		channel.basicConsume(queueName, new TulingConsumer(channel));
+		System.out.println("done");
 	}
 }

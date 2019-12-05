@@ -72,10 +72,5 @@ public class DirectExchangeConsumer {
 		 * 开始消费
 		 */
 		channel.basicConsume(queueName, true, queueingConsumer);
-		while (true) {
-			QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
-			String reciverMessage = new String(delivery.getBody(), "UTF-8");
-			System.out.println("消费消息:-----" + reciverMessage);
-		}
 	}
 }

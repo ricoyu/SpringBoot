@@ -46,6 +46,8 @@
         <module>34spring-rabbitmq</module>
         <module>35springboot-rabbitmq-consumer</module>
         <module>36springboot-rabbitmq-producer</module>
+        <module>37springboot-kafka</module>
+        <module>38springboot-rocketmq</module>
     </modules>
 
     <properties>

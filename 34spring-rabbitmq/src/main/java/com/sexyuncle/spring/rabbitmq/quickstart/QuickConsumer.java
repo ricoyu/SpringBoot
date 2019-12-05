@@ -41,7 +41,7 @@ public class QuickConsumer {
 		 * 自动签收是可靠性消息投递的核心保障
 		 */
 		channel.basicConsume(queueName, true, queueingConsumer);
-		
+		System.out.println("done");
 		/*while (true) {
 			QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
 			System.out.println("消费消息:" + new String(delivery.getBody(), "UTF-8"));
