@@ -23,7 +23,7 @@ spring:
             minimum-idle: 5
             poolName: HikariSexyUnclePool
         password: 123456
-        url: jdbc:mysql://localhost:3306/classicmodels?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&useCompression=true&useUnicode=true&autoReconnect=true&autoReconnectForPools=true&failOverReadOnly=false
+        url: jdbc:mysql://localhost:3306/emojiutf8?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&useCompression=true&useUnicode=true&autoReconnect=true&autoReconnectForPools=true&failOverReadOnly=false
         username: rico
     jackson:
         serialization:

@@ -16,11 +16,11 @@ import org.apache.rocketmq.common.message.MessageExt;
  * @author Rico Yu ricoyu520@gmail.com
  * @version 1.0
  */
-public class Consumer {
+public class Consumer2 {
 	
 	public static void main(String[] args) throws MQClientException {
 		//group要跟producer在不在同一个group里面, 只要Topic一样就可以消费到
-		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("tl_student_group2");
+		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("tl_student_group");
 		consumer.setNamesrvAddr("192.168.2.101:9876;192.168.2.102:9876");
 		
 		// Subscribe one more more topics to consume.

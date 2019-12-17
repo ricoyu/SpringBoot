@@ -48,6 +48,8 @@
         <module>36springboot-rabbitmq-producer</module>
         <module>37springboot-kafka</module>
         <module>38springboot-rocketmq</module>
+        <module>39springboot-freemarker</module>
+        <module>40springboot-handlerInterceptor</module>
     </modules>
 
     <properties>

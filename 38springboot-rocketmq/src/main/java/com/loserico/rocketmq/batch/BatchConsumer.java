@@ -19,7 +19,7 @@ import java.util.List;
  * @author Rico Yu ricoyu520@gmail.com
  * @version 1.0
  */
-public class Consumer {
+public class BatchConsumer {
 	
 	public static void main(String[] args) throws MQClientException {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("batchGroup");
