@@ -50,6 +50,8 @@
         <module>38springboot-rocketmq</module>
         <module>39springboot-freemarker</module>
         <module>40springboot-handlerInterceptor</module>
+        <module>41springboot-servlet</module>
+        <module>42springboot-errorpage</module>
     </modules>
 
     <properties>
