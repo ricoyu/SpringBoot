@@ -56,6 +56,7 @@
         <module>44springboot-rocketmq-txconsumer</module>
         <module>45springboot-console-app</module>
         <module>46springboot-lifecycle</module>
+        <module>47springboot-testing</module>
     </modules>
 
     <properties>
