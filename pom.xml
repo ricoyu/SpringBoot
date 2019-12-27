@@ -52,6 +52,10 @@
         <module>40springboot-handlerInterceptor</module>
         <module>41springboot-servlet</module>
         <module>42springboot-errorpage</module>
+        <module>43springboot-rocketmq-txproducer</module>
+        <module>44springboot-rocketmq-txconsumer</module>
+        <module>45springboot-console-app</module>
+        <module>46springboot-lifecycle</module>
     </modules>
 
     <properties>
@@ -59,7 +63,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <mysql-connector-java.version>8.0.11</mysql-connector-java.version>
-        <jackson.version>2.9.9</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
         <jaxb-api.versioin>2.2.12</jaxb-api.versioin>
         <json.version>20170516</json.version>
         <jsonpath.version>2.4.0</jsonpath.version>
