@@ -21,7 +21,7 @@
             <!-- 如果没有命中就使用这条规则 -->
             <onMismatch>ACCEPT</onMismatch>
         </filter>
-        <file>${logging.path}/springboot-lifecycle.log</file>
+        <file>${logging.path}/springboot-testing.log</file>
         <!-- 每天生成一个日志文件, 保存12天的日志文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <FileNamePattern>${logging.path}/springboot-lifecycle.log.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
@@ -43,7 +43,7 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>error</level>
         </filter>
-        <file>${logging.path}/springboot-lifecycle-error.log</file>
+        <file>${logging.path}/springboot-testing-error.log</file>
         <!-- 每天生成一个日志文件, 保存12天的日志文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <FileNamePattern>${logging.path}/springboot-lifecycle-error.log.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
