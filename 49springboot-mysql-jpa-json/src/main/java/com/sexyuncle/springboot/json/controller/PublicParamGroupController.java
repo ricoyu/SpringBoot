@@ -3,6 +3,8 @@ package com.sexyuncle.springboot.json.controller;
 import com.loserico.json.jackson.JacksonUtils;
 import com.sexyuncle.springboot.json.entity.PubParams;
 import com.sexyuncle.springboot.json.service.PubParamService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +22,7 @@ import javax.annotation.Resource;
  * @author Rico Yu ricoyu520@gmail.com
  * @version 1.0
  */
+@Api("公共参数管理")
 @RestController
 @Slf4j
 public class PublicParamGroupController {
@@ -48,7 +51,8 @@ public class PublicParamGroupController {
 	 * @param pubParams
 	 * @return
 	 */
-	@PostMapping("/pub-param-group")
+	@ApiOperation(value="创建公共参数", consumes = "application/json")
+	@PostMapping(value = "/pub-param-group", consumes = "application/json")
 	public Long createPublicParamGroup(@RequestBody PubParams pubParams) {
 		log.info(JacksonUtils.toJson(pubParams));
 		return pubParamService.save(pubParams);
