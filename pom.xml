@@ -58,6 +58,7 @@
         <module>46springboot-lifecycle</module>
         <module>47springboot-testing</module>
         <module>48springboot-service-trace</module>
+        <module>49springboot-mysql-jpa-json</module>
     </modules>
 
     <properties>
