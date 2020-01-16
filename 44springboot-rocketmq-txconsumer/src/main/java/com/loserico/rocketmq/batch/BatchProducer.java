@@ -35,9 +35,9 @@ public class BatchProducer {
 		
 		String topic = "BatchTest";
 		List<Message> messages = new ArrayList<>();
-		messages.add(new Message(topic, "TagA", "OrderID001", "Hello world 0".getBytes()));
-		messages.add(new Message(topic, "TagA", "OrderID002", "Hello world 1".getBytes()));
-		messages.add(new Message(topic, "TagA", "OrderID003", "Hello world 2".getBytes()));
+		for (int i = 0; i < 100; i++) {
+			messages.add(new Message(topic, "TagA", "OrderID00" + i, ("Hello world " + i).getBytes()));
+		}
 		
 		ListSplitter splitter = new ListSplitter(messages);
 		

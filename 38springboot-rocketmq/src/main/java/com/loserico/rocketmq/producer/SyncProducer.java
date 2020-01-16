@@ -32,17 +32,29 @@ public class SyncProducer {
 		//默认是3秒, 如果网络抖动或者比较慢的话可以调大这个参数
 		producer.setSendMsgTimeout(10000);
 		producer.start();
-		
-		Message message =
+		for (int i = 0; i < 2000; i++) {
+			Message message =
+					new Message("TopicStudent", "TagStudent", "tag", ("Hello RocketMQ-"+i).getBytes(StandardCharsets.UTF_8));
+			//同步方式发送消息
+			SendResult sendResult = producer.send(message);
+			/*
+			 * SendResult [sendStatus=SEND_OK, msgId=C0A801A9418418B4AAC238180C8A0000, offsetMsgId=C0A8026500002A9F00000000000161A1, messageQueue=MessageQueue [topic=TopicStudent, brokerName=broker-a, queueId=0], queueOffset=0]
+			 * brokerName=broker-a 发送到了这个broker
+			 * queueId=0 发送到了第0个queue
+			 */
+			System.out.printf("%s%n", sendResult);
+		}
+		/*Message message =
 				new Message("TopicStudent", "TagStudent", "tag", "Hello RocketMQ20191214".getBytes(StandardCharsets.UTF_8));
 		//同步方式发送消息
 		SendResult sendResult = producer.send(message);
-		/*
+		*//*
 		 * SendResult [sendStatus=SEND_OK, msgId=C0A801A9418418B4AAC238180C8A0000, offsetMsgId=C0A8026500002A9F00000000000161A1, messageQueue=MessageQueue [topic=TopicStudent, brokerName=broker-a, queueId=0], queueOffset=0]
 		 * brokerName=broker-a 发送到了这个broker
 		 * queueId=0 发送到了第0个queue
-		 */
-		System.out.printf("%s%n", sendResult);
+		 *//*
+		System.out.printf("%s%n", sendResult);*/
+		System.out.println("done");
 		producer.shutdown();
 	}
 }

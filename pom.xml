@@ -59,6 +59,7 @@
         <module>47springboot-testing</module>
         <module>48springboot-service-trace</module>
         <module>49springboot-mysql-jpa-json</module>
+        <module>50springboot-apollo</module>
     </modules>
 
     <properties>
