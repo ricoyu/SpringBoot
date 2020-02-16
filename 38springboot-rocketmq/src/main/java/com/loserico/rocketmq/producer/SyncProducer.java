@@ -32,9 +32,9 @@ public class SyncProducer {
 		//默认是3秒, 如果网络抖动或者比较慢的话可以调大这个参数
 		producer.setSendMsgTimeout(10000);
 		producer.start();
-		for (int i = 0; i < 2000; i++) {
+		for (int i = 0; i < 2; i++) {
 			Message message =
-					new Message("TopicStudent", "TagStudent", "tag", ("Hello RocketMQ-"+i).getBytes(StandardCharsets.UTF_8));
+					new Message("student", "AA", "tag", ("Hello RocketMQ-"+i).getBytes(StandardCharsets.UTF_8));
 			//同步方式发送消息
 			SendResult sendResult = producer.send(message);
 			/*

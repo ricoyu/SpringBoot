@@ -7,7 +7,6 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -31,12 +30,12 @@ public class AsyncProducer {
 		
 		producer.setRetryTimesWhenSendFailed(5);
 		
-		int messageCount = 500;
+		int messageCount = 5;
 		final CountDownLatch countDownLatch = new CountDownLatch(messageCount);
 		for (int i = 0; i < messageCount; i++) {
 			final int index = i;
-			Message msg =
-					new Message("TopicTestTag", "TagB", "OrderID188", ("I m sending msg content is ssy" + i).getBytes(StandardCharsets.UTF_8));
+			//Message msg = new Message("TopicTestTag", "TagB", "OrderID188", ("I m sending msg content is ssy" + i).getBytes(StandardCharsets.UTF_8));
+			Message msg = new Message("TopicIdempotency", ("message" + i).getBytes());
 			//消息发送成功后，执行回调函数
 			producer.send(msg, new SendCallback() {
 				

@@ -4,6 +4,7 @@ import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 
 /**
@@ -22,9 +23,11 @@ public class Consumer {
 		//group要跟producer在不在同一个group里面, 只要Topic一样就可以消费到
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("tl_student_group");
 		consumer.setNamesrvAddr("192.168.2.101:9876;192.168.2.102:9876");
+		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 		
 		// Subscribe one more more topics to consume.
-		consumer.subscribe("TopicTestTag", "TagB");
+		//consumer.subscribe("TopicTestTag", "TagB");
+		consumer.subscribe("TopicIdempotency", "*");
 		//consumer.subscribe("TopicStudent", "*");
 		// Register callback to execute on arrival of messages fetched from brokers.
 		MessageListenerConcurrently messageListenerConcurrently = (msgs, context) -> {
