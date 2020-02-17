@@ -2,7 +2,7 @@ package com.sexyuncle.springboot.sharding.aspect;
 
 import com.sexyuncle.springboot.sharding.annotation.Router;
 import com.sexyuncle.springboot.sharding.core.RoutingStrategy;
-import com.sexyuncle.springboot.sharding.dynamic.DataSourceHolder;
+import com.sexyuncle.springboot.sharding.datasource.DataSourceHolder;
 import com.sexyuncle.springboot.sharding.enumeration.RoutingErrors;
 import com.sexyuncle.springboot.sharding.exception.RoutingFieldException;
 import com.sexyuncle.springboot.sharding.exception.RoutingStategyUnmatchException;

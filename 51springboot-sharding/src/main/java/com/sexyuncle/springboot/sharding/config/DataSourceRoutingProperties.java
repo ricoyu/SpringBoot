@@ -1,6 +1,6 @@
 package com.sexyuncle.springboot.sharding.config;
 
-import com.loserico.sharding.constant.RoutingConstant;
+import com.sexyuncle.springboot.sharding.constant.RoutingConstant;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

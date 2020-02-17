@@ -1,7 +1,7 @@
 package com.sexyuncle.springboot.sharding.config;
 
 import com.loserico.orm.dao.JpaDao;
-import com.sexyuncle.springboot.sharding.dynamic.RoutingDataSource;
+import com.sexyuncle.springboot.sharding.datasource.RoutingDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
- * 在工程中开启监控功能后，可以在工程应用运行过程中，通过Druid数据源连接池自带SQL监控提供的多维度数据，分析出业务SQL执行的情况，从而可以调整和优化代码以及SQL，方便业务开发同事调优数据库的访问性能。
- * <p>
- * 要达到开启SQL监控的效果，还需在Spring Boot工程中还实现Druid数据源连接池的Serlvet以及Filter，其Bean的初始化代码如下
- *
  * <p>
  * Copyright: Copyright (c) 2018-04-17 11:15
  * <p>
@@ -91,39 +86,18 @@ public class DataSourceConfig {
 	
 	@Bean
 	public DataSource dataSource00(DataSourceProperties dataSourceProperties00, HikariConfig hikariConfig) {
-		HikariDataSource dataSource = dataSourceProperties00.initializeDataSourceBuilder().type(HikariDataSource.class).build();
-		dataSource.setPoolName(dataSourceProperties00.getName());
-		dataSource.setMinimumIdle(hikariConfig.getMinimumIdle());
-		dataSource.setMaximumPoolSize(hikariConfig.getMaximumPoolSize());
-		dataSource.setIdleTimeout(hikariConfig.getIdleTimeout());
-		dataSource.setConnectionTimeout(hikariConfig.getConnectionTimeout());
-		dataSource.setDataSourceProperties(hikariConfig.getDataSourceProperties());
-		log.info("bar datasource: {}", dataSourceProperties00.getUrl());
-		if (StringUtils.hasText(dataSourceProperties00.getName())) {
-			dataSource.setPoolName(dataSourceProperties00.getName());
-		}
-		return dataSource;
+		return createDataSource(dataSourceProperties00, hikariConfig);
 	}
 	
 	@Bean
 	public DataSource dataSource01(DataSourceProperties dataSourceProperties01, HikariConfig hikariConfig) {
-		HikariDataSource dataSource = dataSourceProperties01.initializeDataSourceBuilder().type(HikariDataSource.class).build();
-		dataSource.setPoolName(dataSourceProperties01.getName());
-		dataSource.setMinimumIdle(hikariConfig.getMinimumIdle());
-		dataSource.setMaximumPoolSize(hikariConfig.getMaximumPoolSize());
-		dataSource.setIdleTimeout(hikariConfig.getIdleTimeout());
-		dataSource.setConnectionTimeout(hikariConfig.getConnectionTimeout());
-		dataSource.setDataSourceProperties(hikariConfig.getDataSourceProperties());
-		log.info("bar datasource: {}", dataSourceProperties01.getUrl());
-		if (StringUtils.hasText(dataSourceProperties01.getName())) {
-			dataSource.setPoolName(dataSourceProperties01.getName());
-		}
-		return dataSource;
+		return createDataSource(dataSourceProperties01, hikariConfig);
 	}
 	
 	@Bean
 	public DataSource dataSource(DataSource dataSource00, DataSource dataSource01) {
 		RoutingDataSource dataSource = new RoutingDataSource();
+		
 		Map<Object, Object> targetDataSources = new HashMap<>();
 		targetDataSources.put("dataSource00", dataSource00);
 		targetDataSources.put("dataSource01", dataSource01);
@@ -163,5 +137,20 @@ public class DataSourceConfig {
 	@Bean
 	public JpaDao jpaDao() {
 		return new JpaDao();
+	}
+	
+	private DataSource createDataSource(DataSourceProperties dataSourceProperties00, HikariConfig hikariConfig) {
+		HikariDataSource dataSource = dataSourceProperties00.initializeDataSourceBuilder().type(HikariDataSource.class).build();
+		dataSource.setPoolName(dataSourceProperties00.getName());
+		dataSource.setMinimumIdle(hikariConfig.getMinimumIdle());
+		dataSource.setMaximumPoolSize(hikariConfig.getMaximumPoolSize());
+		dataSource.setIdleTimeout(hikariConfig.getIdleTimeout());
+		dataSource.setConnectionTimeout(hikariConfig.getConnectionTimeout());
+		dataSource.setDataSourceProperties(hikariConfig.getDataSourceProperties());
+		log.info("bar datasource: {}", dataSourceProperties00.getUrl());
+		if (StringUtils.hasText(dataSourceProperties00.getName())) {
+			dataSource.setPoolName(dataSourceProperties00.getName());
+		}
+		return dataSource;
 	}
 }

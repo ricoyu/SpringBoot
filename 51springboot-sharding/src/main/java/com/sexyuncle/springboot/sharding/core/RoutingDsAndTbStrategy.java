@@ -1,6 +1,6 @@
 package com.sexyuncle.springboot.sharding.core;
 
-import com.sexyuncle.springboot.sharding.dynamic.DataSourceHolder;
+import com.sexyuncle.springboot.sharding.datasource.DataSourceHolder;
 import com.sexyuncle.springboot.sharding.exception.RoutingFieldException;
 import com.sexyuncle.springboot.sharding.exception.RoutingStategyUnmatchException;
 import lombok.extern.slf4j.Slf4j;

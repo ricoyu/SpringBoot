@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * <p>
  * Copyright: (C), 2020/2/16 12:56
@@ -38,5 +40,9 @@ public class OrderService {
 	
 	public Order findById(Long orderId) {
 		return entityOperations.get(Order.class, orderId);
+	}
+	
+	public List<Order> findByUserId(String userId) {
+		return criteriaOperations.findByProperty(Order.class, "userId", userId);
 	}
 }

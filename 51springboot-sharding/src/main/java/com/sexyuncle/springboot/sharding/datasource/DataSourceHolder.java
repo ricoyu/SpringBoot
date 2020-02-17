@@ -1,4 +1,4 @@
-package com.sexyuncle.springboot.sharding.dynamic;
+package com.sexyuncle.springboot.sharding.datasource;
 
 import lombok.extern.slf4j.Slf4j;
 
