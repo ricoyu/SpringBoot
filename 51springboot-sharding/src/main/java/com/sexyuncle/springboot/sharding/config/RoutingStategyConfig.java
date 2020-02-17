@@ -1,9 +1,9 @@
 package com.sexyuncle.springboot.sharding.config;
 
-import com.loserico.sharding.core.RoutingDsAndTbStrategy;
-import com.loserico.sharding.core.RoutingDsStrategy;
-import com.loserico.sharding.core.RoutingStrategy;
-import com.loserico.sharding.core.RoutingTbStrategy;
+import com.sexyuncle.springboot.sharding.core.RoutingDsAndTbStrategy;
+import com.sexyuncle.springboot.sharding.core.RoutingDsStrategy;
+import com.sexyuncle.springboot.sharding.core.RoutingStrategy;
+import com.sexyuncle.springboot.sharding.core.RoutingTbStrategy;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

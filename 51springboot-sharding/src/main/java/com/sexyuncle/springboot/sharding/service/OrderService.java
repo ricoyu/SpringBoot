@@ -1,5 +1,6 @@
 package com.sexyuncle.springboot.sharding.service;
 
+import com.loserico.orm.dao.CriteriaOperations;
 import com.loserico.orm.dao.EntityOperations;
 import com.loserico.orm.dao.SQLOperations;
 import com.sexyuncle.springboot.sharding.entity.Order;
@@ -25,10 +26,17 @@ public class OrderService {
 	private EntityOperations entityOperations;
 	
 	@Autowired
+	private CriteriaOperations criteriaOperations;
+	
+	@Autowired
 	private SQLOperations sqlOperations;
 	
 	public Order save(Order order) {
 		entityOperations.save(order);
 		return order;
+	}
+	
+	public Order findById(Long orderId) {
+		return entityOperations.get(Order.class, orderId);
 	}
 }
