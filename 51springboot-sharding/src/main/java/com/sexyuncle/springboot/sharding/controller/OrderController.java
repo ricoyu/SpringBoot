@@ -1,7 +1,8 @@
 package com.sexyuncle.springboot.sharding.controller;
 
-import com.loserico.web.vo.Result;
-import com.loserico.web.vo.Results;
+import com.loserico.common.lang.vo.Result;
+import com.loserico.common.lang.vo.Results;
+import com.sexyuncle.springboot.sharding.datasource.DataSourceContextHolder;
 import com.sexyuncle.springboot.sharding.entity.Order;
 import com.sexyuncle.springboot.sharding.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,9 @@ public class OrderController {
 	
 	@PostMapping("")
 	public Result save(Order order) throws SQLException {
+		DataSourceContextHolder.setDataSourceKey("dataSource00");
 		orderService.save(order);
-		return Results.success().result(order.getOrderId());
+		return Results.success().result(order.getId());
 	}
 	
 	@GetMapping("/{userId}")

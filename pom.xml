@@ -18,14 +18,12 @@
         <module>05springboot-quartz</module>
         <module>06springboot-security</module>
         <module>07springboot-druid</module>
-        <module>08springboot-elasticsearch</module>
         <module>10springboot-war</module>
         <module>11springboot-war-druid</module>
         <module>12springboot-actuator</module>
         <module>13springboot-swagger</module>
         <module>14springboot-security-basic</module>
         <module>15springboot-redis</module>
-        <module>16springboot-jpa-redis</module>
         <module>17jpa-2nd-cache-redis-batch-insert</module>
         <module>18springboot-h2</module>
         <module>19springboot-properties</module>
@@ -61,6 +59,8 @@
         <module>49springboot-mysql-jpa-json</module>
         <module>50springboot-apollo</module>
         <module>51springboot-sharding</module>
+        <module>52cypher-speed</module>
+        <module>53springboot-webjars</module>
     </modules>
 
     <properties>
@@ -256,27 +256,27 @@
             <dependency>
                 <groupId>com.loserico</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>4.6.6</version>
+                <version>4.6.7</version>
             </dependency>
             <dependency>
                 <groupId>com.loserico</groupId>
                 <artifactId>commons-spring</artifactId>
-                <version>4.6.6</version>
+                <version>4.6.7</version>
             </dependency>
             <dependency>
                 <groupId>com.loserico</groupId>
                 <artifactId>loser-cache</artifactId>
-                <version>4.6.6</version>
+                <version>4.6.7</version>
             </dependency>
             <dependency>
                 <groupId>com.loserico</groupId>
                 <artifactId>loser-web</artifactId>
-                <version>4.6.6</version>
+                <version>4.6.7</version>
             </dependency>
             <dependency>
                 <groupId>com.loserico</groupId>
                 <artifactId>loser-orm</artifactId>
-                <version>4.6.6</version>
+                <version>4.6.7</version>
             </dependency>
 
             <dependency>

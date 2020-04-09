@@ -1,7 +1,5 @@
 package com.sexyuncle.springboot.apollo.datasource.config;
 
-import com.zl.framework.rocketmq.ServiceBeanPostProcessor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -17,9 +15,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RocketMQConfig {
 	
-	@Bean
-	//@ConfigurationProperties(prefix = "rocketmq")
-	public ServiceBeanPostProcessor serviceBeanPostProcessor() {
-		return new ServiceBeanPostProcessor();
-	}
 }

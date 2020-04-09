@@ -1,11 +1,10 @@
 package com.sexyuncle.springboot.hikari.config;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.servlet.ServletRequestListener;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loserico.web.advice.GlobalBindingAdvice;
+import com.loserico.web.advice.RestExceptionAdvice;
+import com.loserico.web.converter.GenericEnumConverter;
+import com.loserico.web.listener.ThreadLocalCleanupListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +15,10 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.loserico.commons.concurrent.ThreadLocalCleanupListener;
-import com.loserico.web.advice.GlobalBindingAdivce;
-import com.loserico.web.advice.RestExceptionAdvice;
-import com.loserico.web.converter.GenericEnumConverter;
+import javax.servlet.ServletRequestListener;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -39,8 +37,8 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
-	public GlobalBindingAdivce globalBindingAdivce() {
-		return new GlobalBindingAdivce();
+	public GlobalBindingAdvice globalBindingAdivce() {
+		return new GlobalBindingAdvice();
 	}
 
 	@Bean

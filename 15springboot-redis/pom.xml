@@ -33,6 +33,28 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.loserico</groupId>
+		    <artifactId>commons-lang</artifactId>
+		    <version>4.7.20</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.loserico</groupId>
+		    <artifactId>commons-spring</artifactId>
+		    <version>4.7.20</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.loserico</groupId>
+		    <artifactId>loser-cache</artifactId>
+		    <version>4.7.20</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.loserico</groupId>
+		    <artifactId>loser-json</artifactId>
+		    <version>4.7.20</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

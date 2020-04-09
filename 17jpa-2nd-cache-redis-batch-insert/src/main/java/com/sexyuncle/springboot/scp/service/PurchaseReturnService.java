@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLongArray;
 
+import com.loserico.common.lang.utils.MathUtils;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,9 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.loserico.cache.redis.JedisUtils;
-import com.loserico.cache.redis.collection.ConcurrentMap;
-import com.loserico.commons.utils.MathUtils;
 import com.loserico.orm.dao.CriteriaOperations;
 import com.loserico.orm.dao.EntityOperations;
 import com.loserico.orm.dao.SQLOperations;
@@ -61,7 +60,6 @@ public class PurchaseReturnService {
 	/**
 	 * 返回新增/更新的记录数
 	 * 
-	 * @param data
 	 * @return
 	 */
 	public AtomicLongArray uploadPurchaseReturns(MultipartFile file, ReturnState returnState) {

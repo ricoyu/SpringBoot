@@ -1,7 +1,5 @@
 package com.sexyuncle.spring.rabbitmq.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.loserico.json.jackson.ObjectMapperFactoryBean;
 import com.sexyuncle.spring.rabbitmq.converter.TulingImageConverter;
 import com.sexyuncle.spring.rabbitmq.converter.TulingWordConverter;
 import com.sexyuncle.spring.rabbitmq.delegate.TulingMsgDelegate;
@@ -22,7 +20,6 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.ContentTypeDelegatingMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import java.util.UUID;
 
@@ -159,21 +156,6 @@ public class RabbitMQConfig {
 		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
 		rabbitTemplate.setReceiveTimeout(50000);
 		return rabbitTemplate;
-	}
-	
-	@Bean
-	@Primary
-	public ObjectMapper objectMapper() {
-		ObjectMapperFactoryBean objectMapperFactoryBean = new ObjectMapperFactoryBean();
-		objectMapperFactoryBean.getEnumProperties().add("code");
-		objectMapperFactoryBean.getEnumProperties().add("desc");
-		objectMapperFactoryBean.setEpochBased(false);
-		try {
-			return objectMapperFactoryBean.getObject();
-		} catch (Exception e) {
-			log.error("msg", e);
-		}
-		return null;
 	}
 	
 	/**

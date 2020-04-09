@@ -1,13 +1,9 @@
 package com.sexyuncle.springboot.hikari.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-
+import com.loserico.orm.dao.JpaDao;
+import com.sexyuncle.springboot.hikari.datasource.CompanyRoutingDataSource;
+import com.sexyuncle.springboot.hikari.enums.Company;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -20,9 +16,10 @@ import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.loserico.orm.jpa.dao.JpaDao;
-import com.sexyuncle.springboot.hikari.datasource.CompanyRoutingDataSource;
-import com.sexyuncle.springboot.hikari.enums.Company;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DataSourceConfig {

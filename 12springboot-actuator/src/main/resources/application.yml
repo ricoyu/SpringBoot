@@ -6,5 +6,5 @@ management:
     web:
       exposure:
         include: "*"
-        
+#Spring Boot pretty print JSON        
 spring.jackson.serialization.indent_output: true

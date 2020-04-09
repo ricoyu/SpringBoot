@@ -1,0 +1,7 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password: deepdata$
+    database: 0
+    timeout: 50000

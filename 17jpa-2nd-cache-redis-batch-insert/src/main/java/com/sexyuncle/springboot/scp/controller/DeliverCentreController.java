@@ -1,9 +1,10 @@
 package com.sexyuncle.springboot.scp.controller;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-import java.io.IOException;
-
+import com.loserico.common.lang.vo.CommmonErrorType;
+import com.loserico.common.lang.vo.Result;
+import com.loserico.common.lang.vo.Results;
+import com.sexyuncle.springboot.scp.service.DeliverCentreService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.loserico.web.vo.Result;
-import com.loserico.web.vo.Results;
-import com.sexyuncle.springboot.scp.service.DeliverCentreService;
+import java.io.IOException;
 
-import io.swagger.annotations.ApiOperation;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @RestController
 @RequestMapping("/deliver-centre")
@@ -32,15 +31,12 @@ public class DeliverCentreController {
 		int uploadCount;
 		try {
 			uploadCount = deliverCentreService.uploadDeliverCentre(new String(file.getBytes(), UTF_8));
-			return Results.builder()
-					.result(uploadCount)
-					.build();
+			return Results.success()
+					.result(uploadCount);
 		} catch (IOException e) {
 			logger.error("", e);
 		}
 
-		return Results.builder()
-				.fail()
-				.build();
+		return Results.status(CommmonErrorType.INTERNAL_SERVER_ERROR).build();
 	}
 }

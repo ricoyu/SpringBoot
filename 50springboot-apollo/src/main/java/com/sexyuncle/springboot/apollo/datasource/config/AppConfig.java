@@ -4,7 +4,7 @@ import com.ctrip.framework.apollo.model.ConfigChange;
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 import com.loserico.common.spring.transaction.TransactionEvents;
-import com.loserico.orm.dao.JpaDao;
+import com.loserico.orm.jpa.dao.JpaDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -37,7 +37,8 @@ public class AppConfig {
 					change.getOldValue(),
 					change.getNewValue(),
 					change.getChangeType()));
-		}priorityOrderedPostProcessors.forEach((o) -> System.out.println(o.getClass().getSimpleName() + " " + ((Ordered)o).getOrder());
+		}
+		
 	}
 	
 }

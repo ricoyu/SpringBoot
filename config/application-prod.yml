@@ -1,0 +1,186 @@
+server:
+  port: 18080
+  servlet:
+    context-path: /api
+
+# 演示环境
+spring:
+  # 国际化
+  messages:
+    basename: i18n/messages
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  devtools:
+    restart:
+      # 热部署
+      enabled: true
+      #classpath目录下的static文件夹内容修改不重启
+      exclude: src/main/resources/statis
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
+    url: jdbc:mysql://127.0.0.1:3306/nta?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8
+    username: root
+    password: idss@1234
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,log4j
+    logSlowSql: true  
+
+  redis:
+    host: 172.16.0.63
+    port: 6379
+    password: ics12345
+    database: 0
+
+  kafka:
+    bootstrap-servers: 172.16.0.63:29092
+    partitions: 1
+    replications: 1
+    consumer:
+      group-id: probe_server
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      auto-commit-interval: 15
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      poll-timeout: 30000ms
+
+  elasticsearch:
+    cluster-name: nta-cluster
+    cluster-nodes: 172.16.0.63:29300
+    pool: 5
+    repositories:
+      enabled: true
+    index-shards: 1
+    index-replicas: 0
+    index-type: event
+    index-prefix: event_
+    index-date-format: yyyy_MM_dd
+    index-search-request-size: 10000
+    index-expire-days: 30
+    alert-index-prefix: alert_
+    dga-meta-index-prefix: dga_medata_
+    dga-index-type: dga
+
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-locations: classpath:mapper/*.xml
+  # 支持统配符 * 或者 ; 分割
+  type-handlers-package: "com.idss.assetcontrol.core.mybatishandler.CustomStringTypeHandler"
+  # 以下配置均有默认值,可以不设置
+  global-config:
+    db-config:
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #数据库类型
+      db-type: MYSQL
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+system-type:
+  app_system_type: 0 # 系统类型 0：标准版本 1：资产发现 2：威胁检测
+
+#资产发现相关配置
+dir:
+  insa-dir: /opt/idss/app/nta_main/insa
+  service-dir: /opt/idss/app/nta_main/insa/service
+
+asset:
+  idss:
+    ntp: 1
+    oauth: true
+    #升级文件存放路径
+    upgrade: ${dir.insadir}/backup/up
+    #上传的恢复压缩文件临时文件夹
+    config-tmp: ${dir.insadir}/backup/config
+    #需要打包备份的配置文件临时文件夹
+    zip-file-tmp: backup/zip_tmp
+    #备份文件存放目录
+    backup-file:  backup/backup
+    # 备份文件密码
+    zip-file-pwd: efBgaIulLKrl0eyaE1E3ocfstDO0m73o
+    #日志备份临时文件夹
+    log-backup-tmp: backup/log_tmp
+    # 日志备份文件夹
+    log-backup: backup/log_backup
+    #系统资源权限
+    sys-resource-socket-auth: home
+    #网络状态权限
+    net-status-socket-auth: home
+    #查询标识  1：从ES中查询  2：从数据库中查询
+    query-flag: 1
+    #流量还原设置配置文件
+    metadata-file-path: /opt/ids/etc/
+    #文件还原配置文件
+    restore-file-path: /opt/ids/etc/rules/
+    #流量过滤名单配置文件
+    flowfilter-file-path: /opt/ids/etc/
+    #流量还原文件大小配置文件
+    suricata-file-path: /opt/ids/etc/
+
+probe:
+  # 版本文件 zip 包解压密码
+  zip-key: DJXSItulTgin+GsVO05deeevQeaG4lYhDbkpxh4aXLn+0kWMJq4i7ml1oK8KEhXAymGheeNBpacdMjw8KXhnLM9OibZPBJnZ1z/S1R44ekenCjYhIvYV1fCgeguPpV4cJsJFxlNzlU8NSwnoqGPi9G68J0G2Kzzw/7jSDZjk0rLxH0sTJ7GaV5omCsEqr6Q8+N52iWbxeilDrYPY9gzkHcmdcRbizDeO6rY688M/kT9JdN5Hwr3jYSuo+0kl//nTcreLQUqjYSpIue75V/b8OkfGPVxEjW/qdxG9FXYG0cttxRBSOteB9ZQTuW80YHCiZOl8NDGXM9dP+AbfbPGX+w==
+  # 探针离线时间 判断 单位：ms
+  expiration-time: 300000
+  version-upload-path: /tmp/nta/
+  #升级包上传sftp 目录
+  sftp-upload-path: /sftp/probe/version
+  push-data-topic: nta-asset-asset  
+  # 入侵规则 升级包中解析文件
+  upgrade-zip-file: upgrade.zip
+  rule-zip-files:
+    class—descript: ids_class_descript.json
+    rule-descript: ids_rule_descript.json
+    rule-gathers: ids_rule_gathers.json
+  # 情报 升级包中解析文件
+  intel-zip-files:
+     ip: intel_ip.json
+     domain: intel_domain.json
+     url: intel_url.json
+     file: intel_file.json
+  # 探针升级文件 设置的sftp 配置
+  sftp:
+    host: 127.0.0.1
+    port: 22
+    username: sftp
+    password: ics12345
+nta:
+  # 检测规则临时文件 生成目录
+  rule-temp-file-dir: /tmp/rule
+  # 检测规则 suricata 读取文件路径
+  rule-class-file-path: /opt/ids/etc/rules/new_class.rules
+

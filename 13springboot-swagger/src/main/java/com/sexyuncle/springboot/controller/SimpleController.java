@@ -26,4 +26,5 @@ public class SimpleController {
 		model.addAttribute("appName", appName);
 		return "home";
 	}
+
 }

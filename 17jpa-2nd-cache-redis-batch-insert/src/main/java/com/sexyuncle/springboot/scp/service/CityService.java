@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.loserico.cache.redis.JedisUtils;
-import com.loserico.cache.redis.collection.ConcurrentMap;
 import com.loserico.orm.dao.SQLOperations;
 import com.sexyuncle.springboot.scp.vo.City;
 

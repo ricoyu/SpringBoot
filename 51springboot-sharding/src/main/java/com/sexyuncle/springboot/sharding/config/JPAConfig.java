@@ -1,9 +1,11 @@
 package com.sexyuncle.springboot.sharding.config;
 
-import com.loserico.orm.dao.JpaDao;
+import com.loserico.orm.jpa.dao.JpaDao;
+import com.sexyuncle.springboot.sharding.datasource.RoutingDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 /**
  * <p>
@@ -32,6 +33,7 @@ import javax.sql.DataSource;
  */
 @Slf4j
 @PropertySource("application.properties")
+@ConfigurationProperties()
 @Configuration
 public class JPAConfig {
 	
@@ -39,14 +41,13 @@ public class JPAConfig {
 	private JpaProperties jpaProperties;
 	
 	@Autowired
-	private DataSource dataSource;
+	private RoutingDataSource dataSource;
 	
 	@Autowired(required = false)
 	private PersistenceUnitManager persistenceUnitManager;
 	
 	@Bean
-	@Resource
-	public PlatformTransactionManager txManager(DataSource dataSource) {
+	public PlatformTransactionManager txManager() {
 		return new DataSourceTransactionManager(dataSource);
 	}
 	

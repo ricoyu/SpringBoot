@@ -1,14 +1,12 @@
 package com.sexyuncle.springboot.scp.jpa.converter;
 
-import java.util.EnumSet;
-
-import javax.persistence.AttributeConverter;
-
+import com.loserico.common.lang.utils.MathUtils;
+import com.sexyuncle.springboot.scp.enums.OrderState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loserico.commons.utils.MathUtils;
-import com.sexyuncle.springboot.scp.enums.OrderState;
+import javax.persistence.AttributeConverter;
+import java.util.EnumSet;
 
 public class OrderStateConverter implements AttributeConverter<OrderState, Integer> {
 

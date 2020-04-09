@@ -1,9 +1,8 @@
 package com.sexyuncle.springboot.hikari;
 
-import com.loserico.commons.jackson.JacksonUtils;
-import org.apache.catalina.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Hikari基于MySQL的优化配置示例
@@ -17,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  */
 @SpringBootApplication
+@EnableTransactionManagement
 public class HikariMySQLApplication {
 
 	public static void main(String[] args) {

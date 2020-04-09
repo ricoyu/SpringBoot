@@ -1,0 +1,10 @@
+# default profile is 'default'
+spring:
+  profiles:
+    active: sunny
+    
+  main:
+    banner-mode: off
+    
+logging:
+  level: error

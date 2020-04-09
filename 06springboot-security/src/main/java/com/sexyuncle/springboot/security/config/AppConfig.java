@@ -1,9 +1,8 @@
 package com.sexyuncle.springboot.security.config;
 
+import com.loserico.orm.dao.JpaDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.loserico.orm.jpa.dao.JpaDao;
 
 @Configuration
 public class AppConfig {

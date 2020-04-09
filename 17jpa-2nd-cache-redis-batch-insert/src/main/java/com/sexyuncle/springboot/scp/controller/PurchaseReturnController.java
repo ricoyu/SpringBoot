@@ -1,24 +1,21 @@
 package com.sexyuncle.springboot.scp.controller;
 
-import static com.loserico.commons.utils.StringUtils.rawJson;
-import static java.util.Optional.ofNullable;
-
-import java.util.concurrent.atomic.AtomicLongArray;
-
+import com.loserico.common.lang.utils.EnumUtils;
+import com.loserico.common.lang.vo.Result;
+import com.loserico.common.lang.vo.Results;
+import com.sexyuncle.springboot.scp.enums.ReturnState;
+import com.sexyuncle.springboot.scp.service.PurchaseReturnService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.loserico.commons.utils.EnumUtils;
-import com.loserico.web.vo.Result;
-import com.loserico.web.vo.Results;
-import com.sexyuncle.springboot.scp.enums.ReturnState;
-import com.sexyuncle.springboot.scp.service.PurchaseReturnService;
+import java.util.concurrent.atomic.AtomicLongArray;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import static java.util.Optional.ofNullable;
 
 @Api("退货单")
 @RestController
@@ -37,17 +34,12 @@ public class PurchaseReturnController {
 		String[] stateAndConfirmStatusArray = fileName.split("\\.")[0].split("-");
 		int length = stateAndConfirmStatusArray.length;
 		if (length < 1) {
-			return Results.builder()
-					.fail()
-					.message("File name should be 20180101-20180510-ReturnState.xls(x)")
-					.build();
+			return Results.status("-1", "File name should be 20180101-20180510-ReturnState.xls(x)").build();
 		}
 		ReturnState state = EnumUtils.toEnum(ReturnState.class, stateAndConfirmStatusArray[length - 1], "desc"); //退货单状态
 		AtomicLongArray array = purchaseReturnService.uploadPurchaseReturns(file,
 				ofNullable(state).orElse(ReturnState.INIT));
-		return Results.builder()
-				.success()
-				.result(rawJson(array.toString()))
-				.build();
+		return Results.success()
+				.result(array.toString());
 	}
 }

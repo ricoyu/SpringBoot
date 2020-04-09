@@ -1,9 +1,8 @@
 package com.sexyuncle.springboot.scp.config;
 
+import com.loserico.common.spring.annotation.processor.PostInitializeGroupOrderedBeanProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.peacefish.spring.annotation.processor.PostInitializeGroupOrderedBeanProcessor;
 
 @Configuration
 public class TaskConfig {

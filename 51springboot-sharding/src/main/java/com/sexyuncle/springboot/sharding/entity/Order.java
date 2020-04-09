@@ -27,8 +27,8 @@ public class Order implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ORDER_ID", updatable = false, unique = true, nullable = false)
-	private Long orderId;
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	private Long id;
 	
 	@Column(name = "USER_ID")
 	private String userId;

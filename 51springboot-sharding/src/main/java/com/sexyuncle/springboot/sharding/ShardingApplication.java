@@ -3,6 +3,8 @@ package com.sexyuncle.springboot.sharding;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -20,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @version 1.0
  * @on
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
 @EnableTransactionManagement(proxyTargetClass = true)
 public class ShardingApplication {
 

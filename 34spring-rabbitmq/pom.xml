@@ -36,12 +36,12 @@
         <dependency>
             <groupId>com.loserico</groupId>
             <artifactId>loser-json</artifactId>
-            <version>4.6.3</version>
+            <version>4.6.7</version>
         </dependency>
         <dependency>
             <groupId>com.loserico</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>4.6.3</version>
+            <version>4.6.7</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

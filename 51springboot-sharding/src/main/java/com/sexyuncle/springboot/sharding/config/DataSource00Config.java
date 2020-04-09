@@ -4,6 +4,7 @@ import com.loserico.common.lang.utils.BeanUtils;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -27,20 +28,13 @@ import org.springframework.util.StringUtils;
 public class DataSource00Config {
 	
 	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSourceProperties properties() {
+	@ConfigurationProperties(prefix = "spring.datasource00")
+	public DataSourceProperties properties00() {
 		return new DataSourceProperties();
 	}
 	
 	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource.hikari")
-	public HikariConfig hikariConfig() {
-		return new HikariConfig();
-	}
-	
-	
-	@Bean
-	public HikariDataSource dataSource(DataSourceProperties properties, HikariConfig hikariConfig) {
+	public HikariDataSource dataSource00(@Qualifier("properties00") DataSourceProperties properties, HikariConfig hikariConfig) {
 		HikariDataSource dataSource = properties.initializeDataSourceBuilder().type(HikariDataSource.class).build();
 		//hikariConfig.copyStateTo(dataSource);
 		BeanUtils.copyProperties(hikariConfig, dataSource, true);

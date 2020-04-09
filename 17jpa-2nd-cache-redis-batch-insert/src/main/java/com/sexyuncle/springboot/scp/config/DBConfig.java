@@ -1,7 +1,10 @@
 package com.sexyuncle.springboot.scp.config;
 
-import java.sql.SQLException;
-
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import com.loserico.orm.dao.JpaDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -9,12 +12,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
-import com.loserico.cache.redis.JedisUtils;
-import com.loserico.orm.jpa.dao.JpaDao;
+import java.sql.SQLException;
 
 /**
  * https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
@@ -64,7 +62,6 @@ public class DBConfig {
 		 * @on
 		 */
 		dataSource.setFilters("stat,mergeStat,wall,slf4jlog");
-		JedisUtils.warmUp(); //预热一下缓存系统
 		return dataSource;
 	}
 

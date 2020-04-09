@@ -1,25 +1,22 @@
 package com.sexyuncle.springboot.scp.controller;
 
-import static com.loserico.commons.utils.StringUtils.rawJson;
-import static java.util.Optional.ofNullable;
-
-import java.util.concurrent.atomic.AtomicLongArray;
-
+import com.loserico.common.lang.utils.EnumUtils;
+import com.loserico.common.lang.vo.Result;
+import com.loserico.common.lang.vo.Results;
+import com.sexyuncle.springboot.scp.enums.ConfirmStatus;
+import com.sexyuncle.springboot.scp.enums.OrderState;
+import com.sexyuncle.springboot.scp.service.PurchaseOrderService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.loserico.commons.utils.EnumUtils;
-import com.loserico.web.vo.Result;
-import com.loserico.web.vo.Results;
-import com.sexyuncle.springboot.scp.enums.ConfirmStatus;
-import com.sexyuncle.springboot.scp.enums.OrderState;
-import com.sexyuncle.springboot.scp.service.PurchaseOrderService;
+import java.util.concurrent.atomic.AtomicLongArray;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import static java.util.Optional.ofNullable;
 
 @Api("订单")
 @RestController
@@ -37,9 +34,8 @@ public class PurchaseOrderController {
 		String[] stateAndConfirmStatusArray = fileName.split("\\.")[0].split("-");
 		int length = stateAndConfirmStatusArray.length;
 		if (length < 2) {
-			return Results.builder()
-					.fail()
-					.message("File name should be xxx-OrderStatus-ConfirmStatus.xls(x)")
+			return Results
+					.status("-1", "File name should be xxx-OrderStatus-ConfirmStatus.xls(x)")
 					.build();
 		}
 		OrderState state = EnumUtils.toEnum(OrderState.class, stateAndConfirmStatusArray[length - 2], "desc"); //订单状态
@@ -48,9 +44,6 @@ public class PurchaseOrderController {
 		AtomicLongArray array = purchaseOrderService.uploadPurchaseOrders(file,
 				ofNullable(state).orElse(OrderState.NEW),
 				ofNullable(confirmStatus).orElse(ConfirmStatus.NO));
-		return Results.builder()
-				.success()
-				.result(rawJson(array.toString()))
-				.build();
+		return Results.success().result(array.toString());
 	}
 }

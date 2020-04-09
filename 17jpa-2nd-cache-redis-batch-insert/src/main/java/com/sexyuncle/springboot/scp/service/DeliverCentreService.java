@@ -1,19 +1,17 @@
 package com.sexyuncle.springboot.scp.service;
 
-import static java.util.stream.Collectors.toList;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.loserico.commons.jsonpath.JsonPathUtils;
+import com.loserico.json.jsonpath.JsonPathUtils;
 import com.loserico.orm.dao.CriteriaOperations;
 import com.loserico.orm.dao.EntityOperations;
 import com.sexyuncle.springboot.scp.entity.DeliverCentre;
 import com.sexyuncle.springboot.scp.vo.DeliverCentreVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional

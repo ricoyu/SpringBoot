@@ -1,38 +1,38 @@
 mybatis:
-    configuration:
-        map-underscore-to-camel-case: true
-    mapper-locations: classpath:/mapper/*.xml
-    type-aliases-package: com.sexyuncle.springboot.druid.mybatis.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.sexyuncle.springboot.druid.mybatis.entity
 pagehelper:
-    helperDialect: mysql
-    params: count=countSql
-    reasonable: true
-    supportMethodsArguments: true
+  helperDialect: mysql
+  params: count=countSql
+  reasonable: true
+  supportMethodsArguments: true
 server:
-    port: 8088
+  port: 8088
 sharding:
-    config:
-        masterslave:
-            load-balance-algorithm-type: round_robin
-            master-data-source-name: master
-            name: ms
-            slave-data-source-names: slave1
-        sharding:
-            props:
-                sql:
-                    show: true
-    jdbc:
-        datasource:
-            master:
-                driver-class-name: com.mysql.cj.jdbc.Driver
-                password: eKZKgHqn42tad8mxLNPb
-                type: com.alibaba.druid.pool.DruidDataSource
-                url: jdbc:mysql://10.19.156.193:3306/cooperation
-                username: ggs
-            names: master,slave1
-            slave1:
-                driver-class-name: com.mysql.cj.jdbc.Driver
-                password: eKZKgHqn42tad8mxLNPb
-                type: com.alibaba.druid.pool.DruidDataSource
-                url: jdbc:mysql://10.19.156.193:3306/cooperation
-                username: ggs
+  config:
+    masterslave:
+      load-balance-algorithm-type: round_robin
+      master-data-source-name: master
+      name: ms
+      slave-data-source-names: slave1
+    sharding:
+      props:
+        sql:
+          show: true
+  jdbc:
+    datasource:
+      master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: eKZKgHqn42tad8mxLNPb
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.19.156.193:3306/cooperation
+        username: ggs
+      names: master,slave1
+      slave1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: eKZKgHqn42tad8mxLNPb
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.19.156.193:3306/cooperation
+        username: ggs

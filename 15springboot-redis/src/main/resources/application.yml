@@ -1,12 +1,9 @@
 spring:
+  profiles:
+    active: prod
   redis:
+    host: 172.16.0.63
+    port: 6379
+    password: ics12345
     database: 0
-    host: 192.168.102.106
-  port: 6379
-  password: null
-  timeout: 0
-  pool:
-    max-active: 1000
-    max-wait: -1
-    max-idle: 8
-    min-idle: 0
+    timeout: 50000

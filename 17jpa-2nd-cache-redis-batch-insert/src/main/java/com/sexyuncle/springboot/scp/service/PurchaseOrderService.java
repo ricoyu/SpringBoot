@@ -1,29 +1,7 @@
 package com.sexyuncle.springboot.scp.service;
 
-import static java.util.stream.Collectors.toList;
-
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicLongArray;
-
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.loserico.commons.utils.EnumUtils;
-import com.loserico.commons.utils.MathUtils;
+import com.loserico.common.lang.utils.EnumUtils;
+import com.loserico.common.lang.utils.MathUtils;
 import com.loserico.orm.dao.CriteriaOperations;
 import com.loserico.orm.dao.EntityOperations;
 import com.loserico.orm.dao.SQLOperations;
@@ -35,6 +13,27 @@ import com.sexyuncle.springboot.scp.enums.ConfirmStatus;
 import com.sexyuncle.springboot.scp.enums.Mark;
 import com.sexyuncle.springboot.scp.enums.OrderState;
 import com.sexyuncle.springboot.scp.utils.ExcelUtils;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicLongArray;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional
@@ -54,7 +53,6 @@ public class PurchaseOrderService {
 	/**
 	 * 返回新增/更新的记录数
 	 * 
-	 * @param data
 	 * @return
 	 */
 	public AtomicLongArray uploadPurchaseOrders(MultipartFile file, OrderState state, ConfirmStatus confirmStatus) {

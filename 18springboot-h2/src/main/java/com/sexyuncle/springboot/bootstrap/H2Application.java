@@ -1,10 +1,9 @@
 package com.sexyuncle.springboot.bootstrap;
 
+import com.loserico.orm.dao.JpaDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import com.loserico.orm.jpa.dao.JpaDao;
 
 /**
  * @SpringBootApplication 注解等价于以下三个注解之和

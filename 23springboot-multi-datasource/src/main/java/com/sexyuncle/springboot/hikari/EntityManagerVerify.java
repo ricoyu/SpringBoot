@@ -1,20 +1,16 @@
 package com.sexyuncle.springboot.hikari;
 
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
-
+import com.loserico.common.lang.utils.ReflectionUtils;
+import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Component;
 
-import com.loserico.commons.jackson.JacksonUtils;
-import com.loserico.commons.utils.ReflectionUtils;
-import com.zaxxer.hikari.HikariDataSource;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.sql.DataSource;
+import java.util.List;
 
 @Component
 @Slf4j
